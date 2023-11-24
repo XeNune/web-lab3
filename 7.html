@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultOutput = document.getElementById('result');
+
+            document.getElementById('calculateBtn').addEventListener('click', function () {
+                const birthdayString = prompt('Введите дату рождения в формате ГГГГ-ММ-ДД:');
+                const birthdayDate = new Date(birthdayString);
+
+                if (isNaN(birthdayDate.getTime())) {
+                    alert('Пожалуйста, введите корректную дату рождения.');
+                } else {
+                    const daysOfWeek = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+                    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+                    const dayOfWeek = daysOfWeek[birthdayDate.getDay()];
+                    const dayOfMonth = birthdayDate.getDate();
+                    const month = months[birthdayDate.getMonth()];
+                    const year = birthdayDate.getFullYear();
+
+                    resultOutput.innerHTML = `День недели: ${dayOfWeek}<br>Дата: ${dayOfMonth} ${month} ${year}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Дата рождения</h1>
+    <button id="calculateBtn">Показать дату</button>
+
+    <div id="result"></div>
+</body>
+</html>

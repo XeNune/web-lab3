@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultOutput = document.getElementById('result');
+
+            document.getElementById('calculateBtn').addEventListener('click', function () {
+                
+                const birthdayString = prompt('Введите дату рождения в формате ГГГГ-ММ-ДД:');
+                const birthdayDate = new Date(birthdayString);
+
+                if (isNaN(birthdayDate.getTime()) || birthdayDate > new Date()) {
+                    alert('Пожалуйста, введите корректную и не будущую дату рождения.');
+                } else {
+                    const currentDate = new Date();
+                    const millisecondsInDay = 1000 * 60 * 60 * 24;
+
+                    const daysLived = Math.floor((currentDate - birthdayDate) / millisecondsInDay);
+                    resultOutput.value = `Вы прожили ${daysLived} дней.`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Калькулятор прожитых дней</h1>
+    <button id="calculateBtn">Рассчитать</button>
+
+    <label for="result">Количество прожитых дней:</label>
+    <input type="text" id="result" readonly>
+</body>
+</html>

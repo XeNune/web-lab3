@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Художники и портреты</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #resultWindow {
+            display: none;
+            text-align: center;
+            color: black;
+        }
+
+        #portraitContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        #portraitText {
+            max-width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        #portrait {
+            max-width: 50%;
+            max-height: 80vh;
+        }
+
+        #backgroundImage {
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+    <script>
+        function showApp() {
+            const artistName = document.getElementById('artistName').value;
+            const selectedBackground = document.getElementById('backgroundSelect').value;
+            const selectedPortrait = document.getElementById('portraitSelect').value;
+            const customCaption = document.getElementById('customCaption').value;
+
+            const resultWindow = window.open('', '_blank');
+            resultWindow.document.write(`
+                <html>
+                <head>
+                    <title>${artistName}'s Portraits</title>
+                    <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: Arial, sans-serif;
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        text-align: center;
+                    }
+
+                    #portraitContainer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: row;
+                    }
+
+                    #portraitText {
+                        max-width: 50%;
+                        padding: 20px;
+                        box-sizing: border-box;
+                        text-align: left;
+                        font-size: 24px;
+                        font-family: 'Times New Roman', Times, serif;
+                        color: black;
+                    }
+
+                    #portrait {
+                        max-width: 50%;
+                        max-height: 80vh;
+                    }
+
+                    #backgroundImage {
+                        width: 100%;
+                        height: 100vh;
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        z-index: -1;
+                    }
+                </style>
+                </head>
+                <body>
+                    <img src="${selectedBackground}" alt="Background Image" id="backgroundImage">
+                    <div id="portraitContainer">
+                        <img src="${selectedPortrait}" alt="${artistName}'s Portrait" id="portrait">
+                        <div id="portraitText">
+                            <h1>${artistName}</h1>
+                            <p>${customCaption}</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `);
+
+            // Ensure the result window is visible after the document is fully loaded
+            resultWindow.addEventListener('load', function () {
+                resultWindow.document.getElementById('backgroundImage').src = selectedBackground;
+                resultWindow.document.getElementById('portrait').src = selectedPortrait;
+                resultWindow.document.getElementById('portrait').alt = `${artistName}'s Portrait`;
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Выберите художника и картинки:</h1>
+    <label for="artistName">Имя художника:</label>
+    <input type="text" id="artistName">
+
+    <label for="backgroundSelect">Выберите задний фон:</label>
+    <select id="backgroundSelect">
+        <option value="src/фон.jpg">Фон1</option>
+        <option value="src/фон2.jpg">Фон2</option>
+    </select>
+
+    <label for="portraitSelect">Выберите портрет:</label>
+    <select id="portraitSelect">
+        <option value="src/пушкин.jpg">Пушкин</option>
+        <option value="src/грибоедов.jpg">Грибоедов</option>
+    </select>
+
+    <label for="customCaption">Короткая подпись к портрету:</label>
+    <input type="text" id="customCaption">
+
+    <button onclick="showApp()">Показать приложение</button>
+</body>
+</html>

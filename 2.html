@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            width: 150px;
+            height: 150px;
+            text-align: left;
+            overflow: hidden;
+        }
+
+
+        th:hover {
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+    </style>
+    <script>
+        const animalData = [
+            { name: 'Жираф', image: 'src/giraffe.gif' },
+            { name: 'Акула', image: 'src/KV1.gif' },
+            { name: 'Хобот', image: 'src/slon.gif' },
+        ];
+    
+        let currentSlideIndex;
+        let slideshowInterval;
+    
+        function showImage(index) {
+            const table = document.getElementById('animalTable');
+            const imageCell = table.rows[1].cells[1];
+            const imageName = animalData[index].name;
+    
+            imageCell.innerHTML = `<img src="${animalData[index].image}" alt="${imageName}">`;
+        }
+    
+        function resetImage() {
+            const table = document.getElementById('animalTable');
+            const imageCell = table.rows[1].cells[1]; 
+    
+            imageCell.innerHTML = '';
+        }
+    
+        function startSlideshow() {
+            currentSlideIndex = 0;
+            showImage(currentSlideIndex);
+    
+            slideshowInterval = setInterval(() => {
+                currentSlideIndex = (currentSlideIndex + 1) % animalData.length;
+                showImage(currentSlideIndex);
+            }, 1500);
+        }
+    
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+            resetImage();
+        }
+    </script>
+    
+</head>
+<body>
+    <table id="animalTable">
+        <tr>
+            <th>Название животного</th>
+            <th>Изображение</th>
+        </tr>
+        <tr>
+            <td onmouseover="showImage(0)" onmouseout="resetImage()">Жираф</td>
+            <td rowspan="3"></td>
+        </tr>
+        <tr>
+            <td onmouseover="showImage(1)" onmouseout="resetImage()">Акула</td>
+        </tr>
+        <tr>
+            <td onmouseover="showImage(2)" onmouseout="resetImage()">Хобот</td>
+        </tr>
+    </table>
+    <button onclick="startSlideshow()">Начать слайд-шоу</button>
+    <button onclick="stopSlideshow()">Остановить слайд-шоу</button>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function calculate() {
+            const x = parseFloat(prompt("Введите значение x:"));
+            const y = parseFloat(prompt("Введите значение y:"));
+            const operation = prompt("Выберите операцию (+, -, *, /):");
+
+            if (isNaN(x) || isNaN(y)) {
+                alert("Пожалуйста, введите числа для x и y.");
+                return;
+            }
+            
+            switch (operation) {
+                case '+':
+                    displayResult(add(x, y));
+                    break;
+                case '-':
+                    displayResult(subtract(x, y));
+                    break;
+                case '*':
+                    displayResult(multiply(x, y));
+                    break;
+                case '/':
+                    displayResult(divide(x, y));
+                    break;
+                default:
+                    alert("Неверный знак операции. Введите +, -, * или /.");
+                    break;
+            }
+        }
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        function subtract(x, y) {
+            return x - y;
+        }
+
+        function multiply(x, y) {
+            return x * y;
+        }
+
+        function divide(x, y) {
+            
+            if (y === 0) {
+                alert("Ошибка: деление на 0.");
+                return "Ошибка";
+            }
+            return x / y;
+        }
+
+        function displayResult(result) {
+           
+            document.getElementById('result').innerHTML = `Результат: ${result}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Калькулятор</h1>
+    <button onclick="calculate()">Вычислить</button>
+
+    <div id="result"></div>
+</body>
+</html>

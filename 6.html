@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultOutput = document.getElementById('result');
+
+            document.getElementById('calculateBtn').addEventListener('click', function () {
+                const x = parseFloat(prompt('Введите координату X:'));
+                const y = parseFloat(prompt('Введите координату Y:'));
+
+                if (isNaN(x) || isNaN(y)) {
+                    alert('Пожалуйста, введите числовые значения для координат.');
+                } else {
+                    const distance = Math.sqrt(x ** 2 + y ** 2);
+                    resultOutput.value = `${distance.toFixed(2)}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Расстояние до начала координат</h1>
+    <button id="calculateBtn">Рассчитать расстояние</button>
+
+    <label for="result">Результат:</label>
+    <input type="text" id="result" readonly>
+</body>
+</html>

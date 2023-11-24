@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const months = [
+                'января', 'февраля', 'марта', 'апреля',
+                'мая', 'июня', 'июля', 'августа',
+                'сентября', 'октября', 'ноября', 'декабря'
+            ];
+
+            const daysOfWeek = [
+                'воскресенье', 'понедельник', 'вторник',
+                'среда', 'четверг', 'пятница', 'суббота'
+            ];
+
+            const currentDate = new Date();
+
+            const dayOfWeek = daysOfWeek[currentDate.getDay()];
+            const dayOfMonth = currentDate.getDate();
+            const month = months[currentDate.getMonth()];
+            const year = currentDate.getFullYear();
+
+            const outputElement = document.getElementById('output');
+            outputElement.innerHTML = `Сегодня ${dayOfWeek}, ${dayOfMonth} ${month} ${year}`;
+        });
+    </script>
+</head>
+<body>
+    <h1>Текущая дата</h1>
+    <div id="output"></div>
+</body>
+</html>

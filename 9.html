@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resultOutput = document.getElementById('result');
+
+            document.getElementById('calculateBtn').addEventListener('click', function () {
+                const length = parseFloat(prompt('Введите высоту:'));
+                const width = parseFloat(prompt('Введите ширину основания:'));
+
+                if (isNaN(length) || isNaN(width)) {
+                    alert('Пожалуйста, введите числовые значения для высоты и ширины основания.');
+                } else {
+                    const area = (length * width) / 2;
+                    resultOutput.value = `${area.toFixed(2)}`;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Площадь прямоугольника</h1>
+    <button id="calculateBtn">Рассчитать площадь</button>
+
+    <label for="result">Площадь:</label>
+    <input type="text" id="result" readonly>
+</body>
+</html>

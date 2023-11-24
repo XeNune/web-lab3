@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const vacationStartDate = new Date('2023-12-31'); 
+            const today = new Date();
+
+            const daysUntilVacation = Math.ceil((vacationStartDate - today) / (1000 * 60 * 60 * 24));
+
+            const daysLeftInput = document.getElementById('daysLeft');
+            daysLeftInput.value = daysUntilVacation;
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Осталось дней до каникул</h1>
+    <label for="daysLeft">Дней до каникул:</label>
+    <input type="text" id="daysLeft" readonly>
+</body>
+</html>

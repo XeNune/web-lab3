@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор биографии</title>
+    <script>
+        function generateBiography() {
+            
+            const name = document.getElementById('name').value;
+            const city = document.getElementById('city').value;
+            const age = document.getElementById('age').value;
+            const education = document.getElementById('education').value;
+            const occupation = document.getElementById('occupation').value;
+            const hobbies = document.getElementById('hobbies').value;
+
+            const biography = `
+                <h1>Биография ${name}</h1>
+                <p>Меня зовут ${name}. Я живу в городе ${city}. Мне ${age} лет.</p>
+                <p>Образование: ${education}</p>
+                <p>Профессия: ${occupation}</p>
+                <p>Хобби: ${hobbies}</p>
+            `;
+
+            const resultWindow = window.open('', '_blank');
+            resultWindow.document.write(`
+                <html>
+                <head>
+                    <title>Биография ${name}</title>
+                </head>
+                <body>
+                    ${biography}
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</head>
+<body>
+    <h1>Анкета</h1>
+    <form>
+        <label for="name">Имя:</label>
+        <input type="text" id="name" required>
+
+        <label for="city">Город:</label>
+        <input type="text" id="city" required>
+
+        <label for="age">Возраст:</label>
+        <input type="text" id="age" required>
+
+        <label for="education">Образование:</label>
+        <input type="text" id="education" required>
+
+        <label for="occupation">Профессия:</label>
+        <input type="text" id="occupation" required>
+
+        <label for="hobbies">Хобби:</label>
+        <input type="text" id="hobbies" required>
+
+        <button type="button" onclick="generateBiography()">Сформировать биографию</button>
+    </form>
+</body>
+</html>

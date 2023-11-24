@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        let i = 0;
+
+        function slideShow() {
+            const carData = [
+                { brand: 'Car 1', price: '$30,000', image: 'src/1651179531_28-sportishka-com-p-mashini-obichnie-mashini-krasivo-foto-35.jpg' },
+                { brand: 'Car 2', price: '$40,000', image: 'src/bugatti-veyron-centenaire-2009-250081.jpg' },
+                { brand: 'Car 3', price: '$35,000', image: 'src/Mddto9WkuuM.jpg' },
+            ];
+
+            if (i >= carData.length) {
+                i = 0;
+            }
+
+            const r = document.getElementById('slide');
+            const carInfo = document.getElementById('car-info');
+
+            r.src = carData[i].image;
+            carInfo.innerHTML = `Brand: ${carData[i].brand}<br>Price: ${carData[i].price}`;
+            
+            i++;
+
+            setTimeout(() => {
+                carInfo.innerHTML = ''; 
+                slideShow();
+            }, 1500);
+        }
+    </script>
+</head>
+<body>
+    <h1>Слайд-шоу</h1>
+    <img id='slide' src="src/1651179531_28-sportishka-com-p-mashini-obichnie-mashini-krasivo-foto-35.jpg" title="Image 1" />
+    <form>
+        <div id="car-info"></div>
+        <input type="button" value="Начать" onClick="slideShow();">
+    </form>
+</body>
+</html>

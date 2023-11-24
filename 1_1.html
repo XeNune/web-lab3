@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея автомобилей</title>
+    <link rel="stylesheet" href="../css/style1.css">
+    <style>
+        .images {
+            max-width: 100%;
+            max-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <ul>
+        <figure onmouseover="showInfo('Audi', '$50,000')" onmouseout="hideInfo()">
+            <img class="images" src="src/car1.jpg" alt="Audi">
+            <figcaption>Audi</figcaption>
+    </figure>
+    <figure onmouseover="showInfo('BMW', '$60,000')" onmouseout="hideInfo()">
+            <img class="images"  src="src/car2.jpg" alt="BMW">
+            <figcaption>BMW</figcaption>
+        </figure>
+        <figure onmouseover="showInfo('Mercedes', '$70,000')" onmouseout="hideInfo()">
+            <img class="images"  src="src/car3.jpg" alt="Mercedes">
+            <figcaption>Mercedes</figcaption>
+        </figure>
+        <figure onmouseover="showInfo('Lamborghini', '$140,000')" onmouseout="hideInfo()">
+            <img class="images" src="src/car4.jpg" class=".images"  alt="Lamborghini">
+            <figcaption>Lamborghini</figcaption>
+        </figure>
+        </ul>
+    </div>
+    <div id="info"></div>
+    <script>
+        function showInfo(make, price) {
+    var infoDiv = document.getElementById('info');
+    infoDiv.innerHTML = 'Марка: ' + make + '<br> Стоимость: ' + price;
+}
+
+function hideInfo() {
+    var infoDiv = document.getElementById('info');
+    infoDiv.innerHTML = '';
+}
+
+    </script>
+</body>
+</html>

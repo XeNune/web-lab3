@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор сказок</title>
+    <script>
+        function generateFairytale() {
+            const heroName = document.getElementById('heroName').value;
+            const heroActivity = document.getElementById('heroActivity').value;
+            const friendName = document.getElementById('friendName').value;
+            const friendHobby = document.getElementById('friendHobby').value;
+
+            const fairytale = `
+                <h1>Сказка о ${heroName}</h1>
+                <p>Жил-был ${heroName}, который очень любил ${heroActivity}. Однажды он встретил своего друга по имени ${friendName}. ${friendName} был страстным поклонником ${friendHobby}.</p>
+                <p>С этого дня началась удивительная история о приключениях и дружбе, полная неожиданных поворотов и веселых моментов.</p>
+                <p>И так, ${heroName} и ${friendName} отправились вместе в увлекательное путешествие, где их ждали новые друзья и захватывающие открытия.</p>
+                <p>И так, закончилась сказка о ${heroName} и его верном друге ${friendName}.</p>
+            `;
+
+            const resultWindow = window.open('', '_blank');
+            resultWindow.document.write(`
+                <html>
+                <head>
+                    <title>Сказка о ${heroName}</title>
+                </head>
+                <body>
+                    ${fairytale}
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</head>
+<body>
+    <h1>Герои сказки</h1>
+    <form>
+        <label for="heroName">Имя главного героя:</label>
+        <input type="text" id="heroName" required>
+
+        <label for="heroActivity">Чем герой любит заниматься:</label>
+        <input type="text" id="heroActivity" required>
+
+        <label for="friendName">Имя друга героя:</label>
+        <input type="text" id="friendName" required>
+
+        <label for="friendHobby">Увлечение друга героя:</label>
+        <input type="text" id="friendHobby" required>
+
+        <button type="button" onclick="generateFairytale()">Сгенерировать сказку</button>
+    </form>
+</body>
+</html>
